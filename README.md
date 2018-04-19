@@ -15,7 +15,7 @@ Yangらの
 
 ## 2. 実験設定
 実験の設定はconfigファイルにて行います。/sample/sample\_gan.configが設定例です。
-なお、nmt-chainerで事前学習したNMTモデルが必要です。
+なお、nmt-chainerで事前学習したGenerator（NMT）モデルが必要です。
 
 
 - **pre_model** : 事前学習したモデルの名前を指定してください。
