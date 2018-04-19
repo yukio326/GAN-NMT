@@ -48,13 +48,16 @@ Yangらの
 
 ## 3. 実行方法
 プログラムを実行するには、モデルを保存したい（保存してある）ディレクトリで以下のコマンドを実行してください。
+
 **Discriminatorの事前学習**
 ```
 python src/rnn_csgan_pretrain.py [MODE] [CONFIG_PATH] [BEST_EPOCH (only testing)]
 ```
+
 **全体学習**
 ```
 python src/rnn_csgan.py [MODE] [CONFIG_PATH] [BEST_PRE_EPOCH (on training) / BEST_EPOCH (on testing)]
 ```
+
 - **MODE** : "train"、"dev"、"test"のいずれかを指定してください。ただし、"train"済みのモデルが存在しない場合は"dev"、"test"モードは正しく実行されません。
 - **CONFIG_PATH** : 実験設定を記述したconfigファイルのパスを指定してください。
