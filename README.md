@@ -73,7 +73,7 @@ Yangらの
 [Improving Neural Machine Translation with Conditional Sequence Generative Adversarial Nets](https://arxiv.org/abs/1703.04887v1)
 におけるRNNモデルを参考にした実装です。
 
-## 1. 環境設定
+### 1. 環境設定
 はじめに、以下の環境設定が必要（バージョンは推奨）です。このうち、chainer及びcupyは記載されたバージョンであることを強く推奨します。
 - Python 3.5.1
 - chainer (ver 4.0.0)
@@ -82,7 +82,7 @@ Yangらの
 - h5py (ver 2.7.1)
 - gensim (ver 2.2.0)
 
-## 2. 実験設定
+### 2. 実験設定
 実験の設定はconfigファイルにて行います。/sample/sample\_gan.configが設定例です。
 なお、nmt-chainerで事前学習したGenerator（NMT）モデルが必要です。
 
@@ -116,7 +116,7 @@ Yangらの
 - **use_beamsearch** : 評価時にbeam searchを行う場合はTrue、行わない場合はFalseを指定してください。
 - **beam_size** : 評価時にbeam searchを行う場合のbeam sizeを整数で指定してください。
 
-## 3. 実行方法
+### 3. 実行方法
 プログラムを実行するには、モデルを保存したい（保存してある）ディレクトリで以下のコマンドを実行してください。
 
 **Discriminatorの事前学習**
