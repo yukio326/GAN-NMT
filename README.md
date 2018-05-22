@@ -5,7 +5,7 @@
 This is an implementation of GAN-NMT based on RNN-CSGAN in [Improving Neural Machine Translation with Conditional Sequence Generative Adversarial Nets](https://arxiv.org/abs/1703.04887v1).
 
 ### 1. Environmental Settings
-You have to install these module. The written virsion is recommended.
+You have to install these modules. The written virsion is recommended.
 - Python 3.5.1
 - chainer (ver 4.0.0)
 - numpy (ver 1.14.2)
