@@ -1,5 +1,74 @@
 # GAN-NMT
 
+## English
+
+This is an implementation of GAN-NMT based on RNN-CSGAN[Improving Neural Machine Translation with Conditional Sequence Generative Adversarial Nets](https://arxiv.org/abs/1703.04887v1).
+
+### 1. Environmental Settings
+You have to install these module. The written virsion is recommended.
+- Python 3.5.1
+- chainer (ver 4.0.0)
+- numpy (ver 1.14.2)
+- cupy (ver 4.0.0)
+- h5py (ver 2.7.1)
+- gensim (ver 2.2.0)
+
+### 2. Experimental Settings
+You have to write experimental settings in the configration file. You can see the sample configration file [sample\_gan.config](https://github.com/yukio326/GAN-NMT/blob/master/sample/sample_gan.config).
+GAN-NMT needs NMT (Generator) model pre-trained by [nmt-chainer](https://github.com/yukio326/nmt-chainer).
+
+
+- **model** : Model name.
+- **pre_model** : Pre-trained Generator model name.
+- **pre_best_epoch** : The best epoch number of the pre-trained Generator model.
+- **source_train** : The path to source train file.
+- **target_train** : The path to target train file.
+- **output_train** : The path to output train file on pre-training of discriminator.
+- **source_dev** : The path to source development file.
+- **source_test** : The path to source test file.
+- **use_gpu** : True / False
+- **gpu_device** : The GPU number.
+- **use_word2vec** : "Make" / "Load" / "None" 
+- **source_word2vec_file** : The path to source word2vec file.
+- **target_word2vec_file** : The path to target word2vec file.
+- **epoch** : The epoch number on training.
+- **generator_optimizer** : "SGD" / "Adam" / "AdaDelta" / "AdaGrad"
+- **discriminator_optimizer** : "SGD" / "Adam" / "AdaDelta" / "AdaGrad"
+- **learning_rate** : The initial learning rate.
+- **use_dropout** : True / False
+- **dropout_rate** : The dropout rate.
+- **source_vocabulary_size** : The source vocabulary size.
+- **target_vocabulary_size** : The target vocabulary size.
+- **embed_size** : The embedding size.
+- **hidden_size** : The hidden size.
+- **batch_size** : The minibatch size.
+- **pooling** : The minibatch pooling size.
+- **generation_limit** : The generation limit number on testing.
+- **use_beamsearch** : True / False
+- **beam_size** : The beam size on testing.
+
+### 3. Execution
+
+
+**Pre-Training of Discriminator**
+```
+python src/rnn_csgan_pretrain.py [MODE] [CONFIG_PATH] [BEST_EPOCH (only testing)]
+```
+
+**Adversarial Training**
+```
+python src/rnn_csgan.py [MODE] [CONFIG_PATH] [BEST_PRE_EPOCH (on training) / BEST_EPOCH (on testing)]
+```
+
+
+- **MODE** : "train" / "dev" / "test"
+- **CONFIG_PATH** : The path to configration file.
+- **BEST_PRE_EPOCH** : The best epoch number of the pre-trained Discriminator model on adversarial training.
+- **BEST_EPOCH** : The epoch number of model using on testing.
+
+
+## 日本語
+
 Yangらの
 [Improving Neural Machine Translation with Conditional Sequence Generative Adversarial Nets](https://arxiv.org/abs/1703.04887v1)
 におけるRNNモデルを参考にした実装です。
@@ -18,8 +87,9 @@ Yangらの
 なお、nmt-chainerで事前学習したGenerator（NMT）モデルが必要です。
 
 
-- **pre_model** : 事前学習したモデルの名前を指定してください。
 - **model** : 保存するモデルの名前を指定してください。
+- **pre_model** : 事前学習したGeneratorモデルの名前を指定してください。
+- **pre_best_epoch** : 事前学習したモデルにおける最良モデルのエポック数を整数で指定してください。
 - **source_train** : 学習用ソースファイルのパスを指定してください。
 - **target_train** : 学習用ターゲットファイルのパスを指定してください。
 - **output_train** : 事前学習用Generator出力サンプルファイルのパスを指定してください。
@@ -61,3 +131,5 @@ python src/rnn_csgan.py [MODE] [CONFIG_PATH] [BEST_PRE_EPOCH (on training) / BES
 
 - **MODE** : "train"、"dev"、"test"のいずれかを指定してください。ただし、"train"済みのモデルが存在しない場合は"dev"、"test"モードは正しく実行されません。
 - **CONFIG_PATH** : 実験設定を記述したconfigファイルのパスを指定してください。
+- **BEST_PRE_EPOCH** : 全体学習時に用いる、事前学習したDiscriminatorモデルにおける最良モデルのエポック数を整数で指定してください。
+- **BEST_EPOCH** : "test"モードのときのみ、使用するモデルのエポック数を整数で指定してください。
