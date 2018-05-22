@@ -2,7 +2,7 @@
 
 ## English
 
-This is an implementation of GAN-NMT based on RNN-CSGAN[Improving Neural Machine Translation with Conditional Sequence Generative Adversarial Nets](https://arxiv.org/abs/1703.04887v1).
+This is an implementation of GAN-NMT based on RNN-CSGAN in [Improving Neural Machine Translation with Conditional Sequence Generative Adversarial Nets](https://arxiv.org/abs/1703.04887v1).
 
 ### 1. Environmental Settings
 You have to install these module. The written virsion is recommended.
